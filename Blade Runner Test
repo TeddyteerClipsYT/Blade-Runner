@@ -56,3 +56,32 @@ function render() {
 
 // Start the game loop
 requestAnimationFrame(render);
+  }
+# Define a dictionary to store user information
+users = {}
+
+# Prompt the user for their choice and username
+choice = input("Do you want to register (r) or sign in (s)? ")
+username = input("Please enter your username: ")
+
+# Process the user's choice
+if choice == 'r':
+  # Register a new user
+  if username in users:
+    print("Error: username already exists!")
+  else:
+    users[username] = {"password": input("Please enter a password: ")}
+    print("User registered successfully!")
+elif choice == 's':
+  # Sign in an existing user
+  if username not in users:
+    print("Error: username not found!")
+  else:
+    password = input("Please enter your password: ")
+    if password != users[username]["password"]:
+      print("Error: incorrect password!")
+    else:
+      print("Welcome back, " + username + "!")
+else:
+  print("Error: invalid choice!")
+
